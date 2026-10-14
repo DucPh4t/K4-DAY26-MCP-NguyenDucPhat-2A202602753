@@ -61,7 +61,17 @@ async def get_current_weather(city: str) -> str:
 
     if not data:
         if not API_KEY:
-            return f"❌ WeatherAPI key not configured. Please set WEATHERAPI_KEY environment variable with your API key from weatherapi.com"
+            return f"""Current Weather for {city.title()} (Demo Mode - Live key not set):
+Temperature: 28°C (82.4°F)
+Feels like: 30°C (86.0°F)
+Condition: Partly Cloudy (Mây rải rác, mát mẻ)
+Humidity: 75%
+Wind: 14 km/h E
+Pressure: 1012 mb
+UV Index: 5
+Visibility: 10 km
+Last updated: Local Demo Data
+"""
         return f"Unable to fetch current weather data for {city}. Please check the city name and API key configuration."
 
     current = data["current"]
@@ -104,7 +114,11 @@ async def get_forecast(city: str, days: int = 3) -> str:
 
     if not data:
         if not API_KEY:
-            return f"❌ WeatherAPI key not configured. Please set WEATHERAPI_KEY environment variable with your API key from weatherapi.com"
+            return f"""Weather Forecast for {city.title()} (Demo Mode - Live key not set):
+Day 1: Max 29°C / Min 22°C - Partly Cloudy (Rain chance: 20%)
+Day 2: Max 31°C / Min 24°C - Sunny (Rain chance: 10%)
+Day 3: Max 28°C / Min 23°C - Light Rain (Rain chance: 60%)
+"""
         return f"Unable to fetch forecast data for {city}. Please check the city name and API key configuration."
 
     location = data["location"]
